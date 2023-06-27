@@ -70,7 +70,119 @@ def tic_tac_toe(board):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+#def tic_tac_toe(board):
+    a = len(board)
+    x='X'
+    o='O'
+    count=0
+    b=False
+    
+    for i in range(0,a):
+        if board[i].count(x)==a:
+            b=True
+            print(x)
+            break
+        elif board[i].count(o)==a:
+            b=True
+            print(o)
+            break
+        else:
+            continue
+    
+        
+    for j in range (0,a):
+        if (x in board[j][j])==True:
+            count+=1
+        elif (o in board[j][j])==True:
+            count-=1
+        else:
+            continue
+        
+        if count==a:
+            b=True
+            print(x)
+            break
+        elif abs(count)==a:
+            b=True
+            print(o)
+            break
+        else:
+            continue
+    
+    for d in range (0,a):
+        count=0
+        for e in range (0,a):
+            if (x in board[e][d])==True:
+                count+=1
+            elif (o in board[e][d])==True:
+                count-=1
+            else:
+                continue
+        if count==a:
+            b=True
+            print (x)
+            break
+        elif abs(count)==a:
+            b=True
+            print(o)
+            break
+        else:
+            continue
+        
+    if b==False:
+        print('NO WINNER')
+
+                        
+                        
+                        
+                        
+
+
+board1 = [
+['X','X','O'],
+['O','X','O'],
+['O','','X'],
+]
+
+board2 = [
+['X','X','O'],
+['O','X','O'],
+['','O','X'],
+]
+
+board3 = [
+['O','X','O'],
+['','O','X'],
+['X','X','O'],
+]
+
+board4 = [
+['X','X','X'],
+['O','X','O'],
+['O','','O'],
+]
+
+board5 = [
+['X','X','O'],
+['O','X','O'],
+['X','','O'],
+]
+
+board6 = [
+['X','X','O'],
+['O','X','O'],
+['X','',''],
+]
+
+board7 = [
+['X','X','O',''],
+['O','X','O','O'],
+['X','','','O'],
+['O','X','','']
+]
+
+
+tic_tac_toe(board1)
 
 def eta(first_stop, second_stop, route_map):
     '''ETA.
@@ -103,4 +215,47 @@ def eta(first_stop, second_stop, route_map):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+#def eta(first_stop, second_stop, route_map):
+    route_map=[]
+    num=len(legs)
+    mins=0
+    
+    for x in range (0,num):
+        y=list(legs.keys())[x][0]
+        route_map.append(y)
+    
+    a=route_map.index(first_stop)
+    b=route_map.index(second_stop)
+    
+    print(a)
+    print(b)
+    
+    
+    while b!=a and a<num:
+        if a<b:
+            mins=mins+legs[(route_map[a],route_map[a+1])]['travel_time_mins']
+            a=a+1
+        elif a>b:
+            while a+1!=num:
+                mins=mins+legs[(route_map[a],route_map[a+1])]['travel_time_mins']
+                a=a+1
+            else:
+                mins=mins+legs[(route_map[a],route_map[0])]['travel_time_mins']
+                a=0
+        else:
+            mins=0  
+    else:
+        print(mins)
+
+legs = {
+    ('a1', 'a2'): {
+        'travel_time_mins': 10
+    },
+    ('a2', 'b1'): {
+        'travel_time_mins': 10230
+    },
+    ('b1', 'a1'): {
+        'travel_time_mins': 1
+}}
+
+eta('a1','b1',route_map)
