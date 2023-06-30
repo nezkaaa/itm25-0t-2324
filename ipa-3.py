@@ -41,8 +41,66 @@ def relationship_status(from_member, to_member, social_graph):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-    pass
+#def relationship_status(from_member, to_member, social_graph):
+    
+    try: 
+        social_graph[from_member]['following'].index(to_member)
+        x='follower'
+    except:
+        x='not following'
+    
+    try:
+        social_graph[to_member]['following'].index(from_member)
+        if x=='follower':
+            x='friends'
+        else:
+            x='followed by'
+    except:
+        if x=="follower":
+            x='follower'
+        else:
+            x="no relationship"
+    
+    return(x)
 
+social_graph = {
+    "@bongolpoc":{"first_name":"Joselito",
+                  "last_name":"Olpoc",
+                  "following":[
+                  ]
+    },
+    "@joaquin":  {"first_name":"Joaquin",
+                  "last_name":"Gonzales",
+                  "following":[
+                      "@chums","@jobenilagan"
+                  ]
+    },
+    "@chums" : {"first_name":"Matthew",
+                "last_name":"Uy",
+                "following":[
+                    "@bongolpoc","@miketan","@rudyang","@joeilagan"
+                ]
+    },
+    "@jobenilagan":{"first_name":"Joben",
+                   "last_name":"Ilagan",
+                   "following":[
+                    "@eeebeee","@joeilagan","@chums","@joaquin"
+                   ]
+    },
+    "@joeilagan":{"first_name":"Joe",
+                  "last_name":"Ilagan",
+                  "following":[
+                    "@eeebeee","@jobenilagan","@chums"
+                  ]
+    },
+    "@eeebeee":  {"first_name":"Elizabeth",
+                  "last_name":"Ilagan",
+                  "following":[
+                    "@jobenilagan","@joeilagan"
+                  ]
+    },
+}
+    
 
 def tic_tac_toe(board):
     '''Tic Tac Toe.
@@ -80,11 +138,11 @@ def tic_tac_toe(board):
     for i in range(0,a):
         if board[i].count(x)==a:
             b=True
-            print(x)
+            return(x)
             break
         elif board[i].count(o)==a:
             b=True
-            print(o)
+            return(o)
             break
         else:
             continue
@@ -100,11 +158,11 @@ def tic_tac_toe(board):
         
         if count==a:
             b=True
-            print(x)
+            return(x)
             break
         elif abs(count)==a:
             b=True
-            print(o)
+            return(o)
             break
         else:
             continue
@@ -120,17 +178,17 @@ def tic_tac_toe(board):
                 continue
         if count==a:
             b=True
-            print (x)
+            return (x)
             break
         elif abs(count)==a:
             b=True
-            print(o)
+            return(o)
             break
         else:
             continue
         
     if b==False:
-        print('NO WINNER')
+        return('NO WINNER')
 
                         
                         
@@ -181,9 +239,6 @@ board7 = [
 ['O','X','','']
 ]
 
-
-tic_tac_toe(board1)
-
 def eta(first_stop, second_stop, route_map):
     '''ETA.
     25 points.
@@ -227,8 +282,6 @@ def eta(first_stop, second_stop, route_map):
     a=route_map.index(first_stop)
     b=route_map.index(second_stop)
     
-    print(a)
-    print(b)
     
     
     while b!=a and a<num:
@@ -245,7 +298,7 @@ def eta(first_stop, second_stop, route_map):
         else:
             mins=0  
     else:
-        print(mins)
+        return(mins)
 
 legs = {
     ('a1', 'a2'): {
@@ -258,4 +311,3 @@ legs = {
         'travel_time_mins': 1
 }}
 
-eta('a1','b1',route_map)
