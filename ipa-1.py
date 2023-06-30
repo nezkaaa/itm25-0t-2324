@@ -40,9 +40,6 @@ def savings(gross_pay, tax_rate, expenses):
     final = gross_pay-((gross_pay*tax_rate)//1)-expenses
     print(str(final)+' centavos')
 
-#insert data of function here 
-savings(,,)
-
 def material_waste(total_material, material_units, num_jobs, job_consumption):
     '''Material Waste.
     5 points.
@@ -83,9 +80,6 @@ def material_waste(total_material, material_units, num_jobs, job_consumption):
     waste=total_material-(num_jobs*job_consumption)
     print(str(waste)+material_units)
 
-#place the numbers for the function here. Ensure the quotation marks for the material_units
-material_waste(,'',,)
-
 def interest(principal, rate, periods):
     '''Interest.
     5 points.
@@ -120,8 +114,6 @@ def interest(principal, rate, periods):
     periods=int(periods)
     result=(principal+(principal*rate*periods))//1
     print(result)
-
-interest(100,0.156,3)
 
 def body_mass_index(weight, height):
     '''Body Mass Index.
@@ -170,6 +162,3 @@ def body_mass_index(weight, height):
     BMI=weight/(height**2)
     
     print(BMI)
-
-#enclose the height in a triple apostrophe
-body_mass_index(132.277,'''5'5"''')
