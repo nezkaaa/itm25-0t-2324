@@ -49,9 +49,8 @@ def shift_letter(letter, shift):
         letter=' '
     else:
         letter='Error'
-    print(letter)
+    return(letter)
 
-shift_letter(',',2)
 
 def caesar_cipher(message, shift):
     '''Caesar Cipher.
@@ -87,9 +86,8 @@ def caesar_cipher(message, shift):
             else:
                 x='Error'
 
-            print(x, end="")
+            return(x, end="")
 
-caesar_cipher('HELLO',2)
 
 def shift_by_letter(letter, letter_shift):
     '''Shift By Letter.
@@ -127,9 +125,8 @@ def shift_by_letter(letter, letter_shift):
         new = ' '
     else:
         new = 'Error.'
-    print(new)
+    return(new)
 
-shift_by_letter('B','K')
 
 def vigenere_cipher(message, key):
     '''Vigenere Cipher.
@@ -180,21 +177,19 @@ def vigenere_cipher(message, key):
             if (x+y-65) >= 65 and (x+y-65)<=90:
                 y=x+y-65
                 letter = chr(y)
-                print(letter,end="")
+                return(letter,end="")
             elif (x+y-65)>90 and (x+y-65)<=116:
                 y=x+y-65-26
                 letter=chr(y)
-                print(letter,end="")
+                return(letter,end="")
         elif x==32:
             y=' '
-            print(y,end="")
+            return(y,end="")
             
         else:
             y='Error'
-            print(y,end="")
+            return(y,end="")
     
-
-vigenere_cipher ('CATRIONA', 'DOG')
 
 def scytale_cipher(message, shift):
     '''Scytale Cipher.
@@ -260,13 +255,12 @@ def scytale_cipher(message, shift):
             for x in range (1,shift+1):
                 placement=x*num-num+z
                 y=message[placement]
-                print(y, end="")
+                return(y, end="")
         
-            print('',end="")
+            return('',end="")
         else:
-            print ()
+            return ()
 
-scytale_cipher('ALGORITHMS_ARE_IMPORTANT', 8)
 
 def scytale_decipher(message, shift):
     '''Scytale De-cipher.
@@ -301,5 +295,5 @@ def scytale_decipher(message, shift):
     for z in range(0,shift):
         for x in range(1,num+1):
             y=x*shift-shift+z
-            print(message[y],end="")
+            return(message[y],end="")
 
