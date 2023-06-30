@@ -38,7 +38,7 @@ def savings(gross_pay, tax_rate, expenses):
     tax_rate=float(tax_rate)
     expenses=int(expenses)
     final = gross_pay-((gross_pay*tax_rate)//1)-expenses
-    print(str(final)+' centavos')
+    return(final)
 
 def material_waste(total_material, material_units, num_jobs, job_consumption):
     '''Material Waste.
@@ -78,7 +78,7 @@ def material_waste(total_material, material_units, num_jobs, job_consumption):
     num_jobs=int(num_jobs)
     job_consumption=int(job_consumption)
     waste=total_material-(num_jobs*job_consumption)
-    print(str(waste)+material_units)
+    return(str(waste)+material_units)
 
 def interest(principal, rate, periods):
     '''Interest.
@@ -113,7 +113,7 @@ def interest(principal, rate, periods):
     rate=float(rate)
     periods=int(periods)
     result=(principal+(principal*rate*periods))//1
-    print(result)
+    return(result)
 
 def body_mass_index(weight, height):
     '''Body Mass Index.
@@ -161,4 +161,4 @@ def body_mass_index(weight, height):
     height=((foot*12)+inches)*0.0254
     BMI=weight/(height**2)
     
-    print(BMI)
+    return(BMI)
