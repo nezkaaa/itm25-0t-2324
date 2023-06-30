@@ -41,11 +41,11 @@ def shift_letter(letter, shift):
     shift=int(shift)
     numerical=ord(letter)
     order=shift+numerical
-    if numerical<=90 and numerical>65:
+    if numerical<=90 and order>90:
         letter=chr(order-26)
     elif order<90 and order>=65:
         letter=chr(order)
-    elif letter=='_':
+    elif letter==' ':
         letter=' '
     else:
         letter='Error'
@@ -121,12 +121,11 @@ def shift_by_letter(letter, letter_shift):
     numerical=ord(letter)
     if shift<=90 and shift>=65 and numerical<=90 and numerical>=65:
         new=chr(numerical+(shift-65))
-    elif letter==' ' and letter_shift=='_':
+    elif letter==' ':
         new = ' '
     else:
         new = 'Error.'
     return(new)
-
 
 def vigenere_cipher(message, key):
     '''Vigenere Cipher.
