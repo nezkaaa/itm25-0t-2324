@@ -73,20 +73,25 @@ def caesar_cipher(message, shift):
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
 #def caesar_cipher(message, shift):
+    y=''
     for x in message:
             shift=int(shift)
             numerical=ord(x)
             order=shift+numerical
             if numerical<=90 and order>90:
                 x=chr(order-26)
+                y=y+x
             elif order<90 and order>=65:
                 x=chr(order)
+                y=y+x
             elif x=='_':
                 x=' '
+                y=y+x
             else:
                 x='Error'
+                y=y+x
 
-            return(x, end="")
+    return(y)
 
 
 def shift_by_letter(letter, letter_shift):
@@ -243,22 +248,18 @@ def scytale_cipher(message, shift):
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
 #def scytale_cipher(message, shift):
+    a=''
     while len(message)%shift!=0:
         message=message+'_'
     else:
-        #print(message)
         num=int(len(message)/shift)
-        #print(num)
         
         for z in range (0, num):
             for x in range (1,shift+1):
                 placement=x*num-num+z
                 y=message[placement]
-                return(y, end="")
-        
-            return('',end="")
-        else:
-            return ()
+                a=a+y
+    return(a)
 
 
 def scytale_decipher(message, shift):
@@ -290,9 +291,11 @@ def scytale_decipher(message, shift):
     # Stay within the function. Only use the parameters as input. The function should return your answer.
 #def scytale_decipher(message, shift):
     num=int(len(message)/shift)
-    
+    b=''
     for z in range(0,shift):
         for x in range(1,num+1):
             y=x*shift-shift+z
-            return(message[y],end="")
+            a=message[y]
+            b=b+a
+    return(b)
 
