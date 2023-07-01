@@ -37,8 +37,8 @@ def savings(gross_pay, tax_rate, expenses):
     gross_pay=int(gross_pay)
     tax_rate=float(tax_rate)
     expenses=int(expenses)
-    final = gross_pay-((gross_pay*tax_rate)//1)-expenses
-    return(final)
+    final = (((gross_pay-(gross_pay*tax_rate))//1)-expenses)//1
+    return(int(final))
 
 def material_waste(total_material, material_units, num_jobs, job_consumption):
     '''Material Waste.
@@ -154,11 +154,13 @@ def body_mass_index(weight, height):
     weight=float(weight)
     weight=weight*0.453592
     
-    [foot,inches]=height.split("'")
+    list(height)
+    [foot,inches]=height
     foot=int(foot)
-    [inches,nothing]=inches.split('"')
     inches=int(inches)
     height=((foot*12)+inches)*0.0254
     BMI=weight/(height**2)
+    
+    return(BMI)
     
     return(BMI)
