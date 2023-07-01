@@ -165,6 +165,7 @@ def vigenere_cipher(message, key):
     # Stay within the function. Only use the parameters as input. The function should return your answer.
 #def vigenere_cipher(message, key):
     add=0
+    a=''
     while len(key) != len(message):
         key=key+key[add]
         add+=1
@@ -178,21 +179,25 @@ def vigenere_cipher(message, key):
         if x >= 65 and x<=90:
             y=key[z]
             y=ord(y)
-            if (x+y-65) >= 65 and (x+y-65)<=90:
-                y=x+y-65
-                letter = chr(y)
-                return(letter,end="")
-            elif (x+y-65)>90 and (x+y-65)<=116:
-                y=x+y-65-26
-                letter=chr(y)
-                return(letter,end="")
+        if (x+y-65) >= 65 and (x+y-65)<=90:
+            y=x+y-65
+            letter = chr(y)
+            a=a+letter
+
         elif x==32:
             y=' '
-            return(y,end="")
-            
+            a=a+' '
+
+        elif (x+y-65)>90 and (x+y-65)<=116:
+            y=x+y-65-26
+            letter=chr(y)
+            a=a+letter
+                
         else:
             y='Error'
-            return(y,end="")
+            a=a+y
+            
+    return(a)
     
 
 def scytale_cipher(message, shift):
