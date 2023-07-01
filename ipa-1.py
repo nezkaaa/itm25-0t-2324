@@ -162,5 +162,3 @@ def body_mass_index(weight, height):
     BMI=weight/(height**2)
     
     return(BMI)
-    
-    return(BMI)
