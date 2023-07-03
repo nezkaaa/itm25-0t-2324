@@ -78,6 +78,10 @@ def caesar_cipher(message, shift):
     # Stay within the function. Only use the parameters as input. The function should return your answer.
 #def caesar_cipher(message, shift):
     y=''
+    if shift>26:
+        shift=shift%26
+    else:
+        shift=shift
     for x in message:
             shift=int(shift)
             numerical=ord(x)
@@ -88,7 +92,7 @@ def caesar_cipher(message, shift):
             elif order<90 and order>=65:
                 x=chr(order)
                 y=y+x
-            elif x=='_':
+            elif x==' ':
                 x=' '
                 y=y+x
             else:
