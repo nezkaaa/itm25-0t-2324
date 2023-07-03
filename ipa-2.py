@@ -39,6 +39,10 @@ def shift_letter(letter, shift):
     # Stay within the function. Only use the parameters as input. The function should return your answer.
 #def shift_letter(letter,shift):
     shift=int(shift)
+    if shift>26:
+        shift=shift%26
+    else:
+        shift=shift
     numerical=ord(letter)
     order=shift+numerical
     if numerical<=90 and order>90:
