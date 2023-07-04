@@ -132,13 +132,17 @@ def shift_by_letter(letter, letter_shift):
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     shift=ord(letter_shift)
     numerical=ord(letter)
+    
     if shift<=90 and shift>=65 and numerical<=90 and numerical>=65:
-        new=chr(numerical+(shift-65))
-    elif letter==' ':
-        new = ' '
-    else:
-        new = 'Error.'
-    return(new)
+        new=(numerical+(shift-65))
+        if new>90:
+            new=new-90+64
+            new=chr(new)
+            return(new)
+        else:
+            new=chr(new)
+            return(new)
+
 
 def vigenere_cipher(message, key):
     '''Vigenere Cipher.
@@ -174,37 +178,42 @@ def vigenere_cipher(message, key):
 #def vigenere_cipher(message, key):
     add=0
     a=''
+    b=0
+    
     while len(key) != len(message):
         key=key+key[add]
         add+=1
     else:      
         message = list(message)
         key = list(key)
-    
-    for x in message:
-        z=message.index(x)
-        x=ord(x)
-        if x >= 65 and x<=90:
-            y=key[z]
-            y=ord(y)
-        if (x+y-65) >= 65 and (x+y-65)<=90:
-            y=x+y-65
-            letter = chr(y)
-            a=a+letter
 
-        elif x==32:
-            y=' '
-            a=a+' '
 
-        elif (x+y-65)>90 and (x+y-65)<=116:
-            y=x+y-65-26
-            letter=chr(y)
-            a=a+letter
+        for letter in message:
+            letter=ord(letter)
+            if letter>=65 and letter <= 90:
+                keynum=key[b]
+                print(b)
+                print(keynum)
+                keynum=ord(keynum)-65
+                c=letter+keynum
+                b+=1
+
+                if c>90:
+                    c=c-26
+                    c=chr(c)
+                    a=a+c
+                    
+                else:
+                    c=chr(c)
+                    a=a+c
+                    
+            elif letter==32:
+                c=' '
+                a=a+c
                 
-        else:
-            y='Error'
-            a=a+y
-            
+            else:
+                next
+
     return(a)
     
 
