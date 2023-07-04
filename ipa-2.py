@@ -192,8 +192,6 @@ def vigenere_cipher(message, key):
             letter=ord(letter)
             if letter>=65 and letter <= 90:
                 keynum=key[b]
-                print(b)
-                print(keynum)
                 keynum=ord(keynum)-65
                 c=letter+keynum
                 b+=1
