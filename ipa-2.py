@@ -38,23 +38,17 @@ def shift_letter(letter, shift):
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
 #def shift_letter(letter,shift):
-    shift=int(shift)
-    if shift>26:
-        shift=shift%26
-    else:
-        shift=shift
+    shift=int(shift)%26
     numerical=ord(letter)
     order=shift+numerical
-    if numerical<=90 and order>90:
-        letter=chr(order-26)
-    elif order<90 and order>=65:
-        letter=chr(order)
-    elif letter==' ':
+    
+    if letter==' ':
         letter=' '
+    elif order>90:
+        letter=chr(order-26)
     else:
-        letter='Error'
+        letter=chr(order)
     return(letter)
-
 
 def caesar_cipher(message, shift):
     '''Caesar Cipher.
@@ -77,29 +71,22 @@ def caesar_cipher(message, shift):
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
 #def caesar_cipher(message, shift):
-    y=''
-    if shift>26:
-        shift=shift%26
-    else:
-        shift=shift
+    final=''
     for x in message:
-            shift=int(shift)
-            numerical=ord(x)
-            order=shift+numerical
-            if numerical<=90 and order>90:
-                x=chr(order-26)
-                y=y+x
-            elif order<90 and order>=65:
-                x=chr(order)
-                y=y+x
-            elif x==' ':
-                x=' '
-                y=y+x
-            else:
-                x='Error'
-                y=y+x
+        shift=int(shift)%26
+        numerical=ord(x)
+        order=shift+numerical
+        if x==' ':
+            x=' '
+            final=final+x
+        elif order>90:
+            x=chr(order-26)
+            final=final+x
+        else:
+            x=chr(order)
+            final=final+x
 
-    return(y)
+    return(final)
 
 
 def shift_by_letter(letter, letter_shift):
@@ -132,8 +119,11 @@ def shift_by_letter(letter, letter_shift):
     # Stay within the function. Only use the parameters as input. The function should return your answer.
     shift=ord(letter_shift)
     numerical=ord(letter)
+    if letter==' ':
+        new=' '
+        return(new)
     
-    if shift<=90 and shift>=65 and numerical<=90 and numerical>=65:
+    elif shift<=90 and shift>=65 and numerical<=90 and numerical>=65:
         new=(numerical+(shift-65))
         if new>90:
             new=new-90+64
@@ -142,7 +132,6 @@ def shift_by_letter(letter, letter_shift):
         else:
             new=chr(new)
             return(new)
-
 
 def vigenere_cipher(message, key):
     '''Vigenere Cipher.
@@ -189,30 +178,25 @@ def vigenere_cipher(message, key):
 
 
         for letter in message:
-            letter=ord(letter)
-            if letter>=65 and letter <= 90:
-                keynum=key[b]
-                keynum=ord(keynum)-65
-                c=letter+keynum
-                b+=1
+            letter_shift=key[b]
+            b+=1
+            shift=ord(letter_shift)
+            numerical=ord(letter)
+            if letter==' ':
+                new=' '
+                a=a+new
 
-                if c>90:
-                    c=c-26
-                    c=chr(c)
-                    a=a+c
-                    
+            elif shift<=90 and shift>=65 and numerical<=90 and numerical>=65:
+                new=(numerical+(shift-65))
+                if new>90:
+                    new=new-90+64
+                    new=chr(new)
+                    a=a+new
                 else:
-                    c=chr(c)
-                    a=a+c
-                    
-            elif letter==32:
-                c=' '
-                a=a+c
-                
-            else:
-                next
-
+                    new=chr(new)
+                    a=a+new
     return(a)
+
     
 
 def scytale_cipher(message, shift):
