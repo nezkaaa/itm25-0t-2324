@@ -98,6 +98,7 @@ def tic_tac_toe(board):
     b=False
     
     for i in range(0,a):
+        
         if board[i].count(x)==a:
             b=True
             return(x)
@@ -109,8 +110,9 @@ def tic_tac_toe(board):
         else:
             continue
     
-        
+    count=0    
     for j in range (0,a):
+        
         if (x in board[j][j])==True:
             count+=1
         elif (o in board[j][j])==True:
@@ -128,6 +130,28 @@ def tic_tac_toe(board):
             break
         else:
             continue
+    
+    count=0
+    for f in range (0,a):
+        
+        if (x in board[a-1-f][f])==True:
+            count+=1
+        elif (o in board[a-1-f][f])==True:
+            count-=1
+        else:
+            continue
+        
+        if count==a:
+            b=True
+            return(x)
+            break
+        elif abs(count)==a:
+            b=True
+            return(o)
+            break
+        else:
+            continue
+            
     
     for d in range (0,a):
         count=0
@@ -151,7 +175,6 @@ def tic_tac_toe(board):
         
     if b==False:
         return('NO WINNER')
-
                         
 def eta(first_stop, second_stop, route_map):
     '''ETA.
@@ -184,35 +207,31 @@ def eta(first_stop, second_stop, route_map):
     '''
     # Replace `pass` with your code.
     # Stay within the function. Only use the parameters as input. The function should return your answer.
-#def eta(first_stop, second_stop, route_map):
-    route_map=[]
-    num=len(legs)
+    routemap=[]
+    num=len(route_map)
     mins=0
     
     for x in range (0,num):
-        y=list(legs.keys())[x][0]
-        route_map.append(y)
+        y=list(route_map.keys())[x][0]
+        routemap.append(y)
     
-    a=route_map.index(first_stop)
-    b=route_map.index(second_stop)
+    a=routemap.index(first_stop)
+    b=routemap.index(second_stop)
     
     
     
     while b!=a and a<num:
         if a<b:
-            mins=mins+legs[(route_map[a],route_map[a+1])]['travel_time_mins']
+            mins=mins+route_map[(routemap[a],routemap[a+1])]['travel_time_mins']
             a=a+1
         elif a>b:
             while a+1!=num:
-                mins=mins+legs[(route_map[a],route_map[a+1])]['travel_time_mins']
+                mins=mins+route_map[(routemap[a],routemap[a+1])]['travel_time_mins']
                 a=a+1
             else:
-                mins=mins+legs[(route_map[a],route_map[0])]['travel_time_mins']
+                mins=mins+route_map[(routemap[a],routemap[0])]['travel_time_mins']
                 a=0
         else:
             mins=0  
     else:
         return(mins)
-
-
-
